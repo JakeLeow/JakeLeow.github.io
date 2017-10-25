@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text to Speech Test</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script src="js/jquery-3.1.1.min.js"></script>
+  </head>
+  <body>
+    <textarea id='speech' placeholder='請輸入想聽的話' rows="5" cols="50">你好，哈哈哈哈哈哈哈</textarea></br>
+    <button id="btn_play">播放</button></br>
+    </br>
+    貼心提醒: </br>
+    1. 瀏覽器支援：Chrome，Safari</br>
+    2. iPhone請設為響鈴模式 <img src="https://help.apple.com/iphone/11/zh_TW.lproj/GlobalArt/IL_Ring.png" alt="" height="18" width="20"></br>
+    <script>
+        var msg = "";
+        
+        window.onload = function(){
+            msg = $("#speech").val();
+            play(msg);
+        }
+    
+        $("#btn_play").click(function(){
+            msg = $("#speech").val();
+            play(msg);
+        })
+    
+        function play(msg) {
+            var u = new SpeechSynthesisUtterance();
+            u.text = msg;
+            u.lang = 'zh-TW';
+            u.rate = 0.7;
+            u.volume = 0.7;
+            speechSynthesis.speak(u);
+        }
+    </script>
+</body>
+</html>
